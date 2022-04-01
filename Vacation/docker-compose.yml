@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=1Secure*Password1
+    ports:
+    - "1440:1433"
+
+  vacation.web:
+    image: ${DOCKER_REGISTRY-}vacationweb
+    build:
+      context: .
+      dockerfile: Vacation.Web/Dockerfile
+    depends_on:
+      - db
+ 

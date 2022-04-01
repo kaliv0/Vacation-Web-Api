@@ -1,0 +1,42 @@
+services:
+  db:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: 1Secure*Password1
+    image: mcr.microsoft.com/mssql/server:2017-latest
+  vacation.web:
+    build:
+      context: C:\Users\Kaloyan\Desktop\Vacation
+      dockerfile: Vacation.Web/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Vacation.Web
+      target: base
+    container_name: Vacation.Web
+    depends_on:
+      db:
+        condition: service_started
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: ''
+    image: vacationweb:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net6.0/Vacation.Web.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    tty: true
+    volumes:
+    - C:\Users\Kaloyan\Desktop\Vacation\Vacation.Web:/app:rw
+    - C:\Users\Kaloyan\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Kaloyan\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Kaloyan\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\Kaloyan\.nuget\packages:/root/.nuget/packages:ro
+    - C:\Users\Kaloyan\Desktop\Vacation:/src:rw
+version: '3.4'
