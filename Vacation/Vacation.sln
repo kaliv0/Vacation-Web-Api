@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vacation.Domain", "Vacation
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vacation.Services", "Vacation.Services\Vacation.Services.csproj", "{594941C8-57D4-4190-88AE-D607633A8B21}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2707A546-487F-4274-89A7-1A48BDC7514F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{594941C8-57D4-4190-88AE-D607633A8B21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{594941C8-57D4-4190-88AE-D607633A8B21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{594941C8-57D4-4190-88AE-D607633A8B21}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2707A546-487F-4274-89A7-1A48BDC7514F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2707A546-487F-4274-89A7-1A48BDC7514F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2707A546-487F-4274-89A7-1A48BDC7514F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2707A546-487F-4274-89A7-1A48BDC7514F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
