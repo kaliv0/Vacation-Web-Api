@@ -9,7 +9,6 @@ using Vacation.Web.Middleware;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add builder.Service to the container.
-
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<VacationDbContext>(x => x.UseSqlServer(connectionString));
 

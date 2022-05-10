@@ -3,5 +3,7 @@
     public interface IServiceManager
     {
         ICountryService CountryService { get; }
+
+        IAchievementService AchievementService { get; }
     }
 }

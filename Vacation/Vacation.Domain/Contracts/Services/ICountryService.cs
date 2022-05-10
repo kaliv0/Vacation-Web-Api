@@ -1,6 +1,5 @@
 ﻿using Vacation.Domain.Dtos;
 using Vacation.Domain.Dtos.CountryDtos;
-using Vacation.Domain.Entities;
 
 namespace Vacation.Domain.Contracts.Services
 {
