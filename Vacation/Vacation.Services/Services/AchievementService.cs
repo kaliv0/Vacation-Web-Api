@@ -2,6 +2,8 @@
 using Vacation.Domain.Contracts.Services;
 using Vacation.Domain.Dtos;
 using Vacation.Domain.Dtos.AchievementDtos;
+using Vacation.Domain.Filters;
+using Vacation.Domain.Mappers;
 
 namespace Vacation.Services.Services
 {
@@ -34,10 +36,10 @@ namespace Vacation.Services.Services
             //await _repositoryManager.CountryRepository.DeleteAsync(countryToDelete);
         }
 
-        public async Task<IEnumerable<GetAchievementDto>> GetAllAsync()
+        public async Task<IEnumerable<GetAchievementDto>> GetAllAsync(GetAchievementFilter getAchievementFilter)
         {
-            var achievementsInDb = await _repositoryManager.AchievementRepository.GetAllAsync();
-            return achievementsInDb.Select(c => c.ToAchievementDto()).ToList();
+            var achievementsInDb = await _repositoryManager.AchievementRepository.GetAllAchievementsAsync(getAchievementFilter);
+            return achievementsInDb.Select(a => a.ToAchievementDto()).ToList();
         }
 
         public async Task<GetAchievementDto> GetByIdAsync(int id)

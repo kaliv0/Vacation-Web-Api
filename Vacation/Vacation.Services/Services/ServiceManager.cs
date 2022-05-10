@@ -12,6 +12,9 @@ namespace Vacation.Services.Services
         {
             _lazyCountryService = new Lazy<ICountryService>(()
                 => new CountryService(repositoryManager));
+            
+            _lazyAchievementService = new Lazy<IAchievementService>(()
+                => new AchievementService(repositoryManager));
         }
 
         public ICountryService CountryService => _lazyCountryService.Value;

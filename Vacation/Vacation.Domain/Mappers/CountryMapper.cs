@@ -9,19 +9,17 @@ namespace Vacation.Domain
     {
         public static GetCountryDto ToCountryDto(this Country country)
         {
-            return new GetCountryDto
-            {
-                Id = country.Id,
-                Name = country.Name,
-                Cities = country.Cities
-                    .Select(c => BaseEntityTransformer<City>.ToBaseDto(c))
-                    .ToList()
-            };
+            return new GetCountryDto(
+                  country.Id,
+                  country.Name,
+                  country.Cities
+                        .Select(c => BaseEntityTransformer<City>.ToBaseDto(c))
+                        .ToList());
         }
 
         public static Country ToCountry(this AddOrEditCountryDto countryDto)
         {
-            return new Country
+            return new Country //TODO
             {
                 Name = countryDto.Name
             };

@@ -4,8 +4,12 @@ namespace Vacation.Domain.Dtos.AchievementDtos
 {
     public class GetAchievementDto : BaseDto
     {
-        public Citizen Citizen { get; set; }
+        public GetAchievementDto(int id, string name, string citizen)
+            : base(id, name)
+        {
+            this.Citizen = citizen;
+        }
 
-        public Country? Country { get; set; }
+        public string Citizen { get; set; }
     }
 }

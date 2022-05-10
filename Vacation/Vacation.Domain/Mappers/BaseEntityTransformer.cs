@@ -8,11 +8,7 @@ namespace Vacation.Domain.Mappers
     {
         public static BaseDto ToBaseDto(T entity)
         {
-            return new BaseDto
-            {
-                Id = entity.Id,
-                Name = entity.Name
-            };
+            return new BaseDto(entity.Id, entity.Name);
         }
     }
 }

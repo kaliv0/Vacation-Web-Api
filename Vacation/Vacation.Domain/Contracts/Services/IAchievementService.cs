@@ -1,11 +1,12 @@
 ﻿using Vacation.Domain.Dtos;
 using Vacation.Domain.Dtos.AchievementDtos;
+using Vacation.Domain.Filters;
 
 namespace Vacation.Domain.Contracts.Services
 {
     public interface IAchievementService
     {
-        Task<IEnumerable<GetAchievementDto>> GetAllAsync();
+        Task<IEnumerable<GetAchievementDto>> GetAllAsync(GetAchievementFilter getAchievementFilter);
 
         Task<GetAchievementDto> GetByIdAsync(int id);
 

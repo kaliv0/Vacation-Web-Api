@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Vacation.Domain.Contracts.Services;
+using Vacation.Domain.Filters;
 
 namespace Vacation.Web.Controllers
 {
@@ -16,9 +16,9 @@ namespace Vacation.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAllAsync([FromQuery] GetAchievementFilter getAchievementFilter)
         {
-            var achievements = await _serviceManager.AchievementService.GetAllAsync();
+            var achievements = await _serviceManager.AchievementService.GetAllAsync(getAchievementFilter);
             return Ok(achievements);
         }
 

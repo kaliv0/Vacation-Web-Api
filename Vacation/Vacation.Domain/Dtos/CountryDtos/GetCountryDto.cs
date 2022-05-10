@@ -2,6 +2,12 @@
 {
     public class GetCountryDto : BaseDto
     {
-        public List<BaseDto> Cities { get; set; }
+        public GetCountryDto(int id, string name, IEnumerable<BaseDto> cities)
+            : base(id, name)
+        {
+            this.Cities = cities;
+        }
+
+        public IEnumerable<BaseDto> Cities { get; set; }
     }
 }
