@@ -11,7 +11,10 @@ namespace Vacation.Domain.Mappers
             {
                 Id = citizen.Id,
                 Name = citizen.Name,
-                City = citizen.City.Name
+                City = citizen.City.Name,
+                Achievements = citizen.Achievements
+                        .Select(c => BaseEntityTransformer<Achievement>.ToBaseDto(c))
+                        .ToList()
             };
         }
 

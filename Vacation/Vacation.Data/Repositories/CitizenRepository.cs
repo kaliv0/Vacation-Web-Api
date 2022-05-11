@@ -17,17 +17,18 @@ namespace Vacation.Data.Repositories
         public async Task<IEnumerable<Citizen>> GetAllCitizensAsync(GetCitizenFilter getCitizenFilter)
         {
             var Citizens = _dbContext.Citizens
-                            .Include(a => a.City)
+                            .Include(c => c.City)
+                            .Include(c => c.Achievements)
                             .AsQueryable();
 
             if (getCitizenFilter.City != null)
             {
-                Citizens = Citizens.Where(a => a.City.Name == getCitizenFilter.City);
+                Citizens = Citizens.Where(c => c.City.Name == getCitizenFilter.City);
             }
 
             var result = await Citizens.ToListAsync();
             if (!result.Any())
-{
+            {
                 throw new CitizenFromCityNotFoundException();
             }
 
@@ -37,8 +38,9 @@ namespace Vacation.Data.Repositories
         public override async Task<Citizen?> GetByIdAsync(int id)
         {
             return await _dbContext.Citizens
-                            .Include(a => a.City)
-                            .FirstOrDefaultAsync(a => a.Id == id);
+                            .Include(c => c.City)
+                            .Include(c => c.Achievements)
+                            .FirstOrDefaultAsync(c => c.Id == id);
         }
     }
 }

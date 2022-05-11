@@ -17,12 +17,12 @@ namespace Vacation.Data.Repositories
         public async Task<IEnumerable<Place>> GetAllPlacesAsync(GetPlaceFilter getPlaceFilter)
         {
             var Places = _dbContext.Places
-                            .Include(a => a.City)
+                            .Include(p => p.City)
                             .AsQueryable();
 
             if (getPlaceFilter.City != null)
             {
-                Places = Places.Where(a => a.City.Name == getPlaceFilter.City);
+                Places = Places.Where(p => p.City.Name == getPlaceFilter.City);
             }
 
             var result = await Places.ToListAsync();
@@ -37,8 +37,8 @@ namespace Vacation.Data.Repositories
         public override async Task<Place?> GetByIdAsync(int id)
         {
             return await _dbContext.Places
-                            .Include(a => a.City)
-                            .FirstOrDefaultAsync(a => a.Id == id);
+                            .Include(p => p.City)
+                            .FirstOrDefaultAsync(p => p.Id == id);
         }
     }
 }

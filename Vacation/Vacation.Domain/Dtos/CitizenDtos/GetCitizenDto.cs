@@ -3,5 +3,8 @@
     public class GetCitizenDto : BaseDto
     {
         public string City { get; set; }
+
+        public IEnumerable<BaseDto> Achievements { get; set; } = new HashSet<BaseDto>();
+
     }
 }
