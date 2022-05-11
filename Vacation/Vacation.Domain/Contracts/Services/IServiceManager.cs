@@ -6,6 +6,10 @@
 
         ICityService CityService { get; }
 
+        IPlaceService PlaceService { get; }
+
+        ICitizenService CitizenService { get; }
+
         IAchievementService AchievementService { get; }
     }
 }

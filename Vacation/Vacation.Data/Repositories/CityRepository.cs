@@ -17,12 +17,14 @@ namespace Vacation.Data.Repositories
         public async Task<IEnumerable<City>> GetAllCitiesAsync(GetCityFilter getCityFilter)
         {
             var Cities = _dbContext.Cities
-                            .Include(a => a.Country)
+                            .Include(c => c.Country)
+                            .Include(c => c.PlacesToVisit)
+                            .Include(c => c.FamousCitizens)
                             .AsQueryable();
 
             if (getCityFilter.Country != null)
             {
-                Cities = Cities.Where(a => a.Country.Name == getCityFilter.Country);
+                Cities = Cities.Where(c => c.Country.Name == getCityFilter.Country);
             }
 
             var result = await Cities.ToListAsync();
@@ -37,8 +39,10 @@ namespace Vacation.Data.Repositories
         public override async Task<City?> GetByIdAsync(int id)
         {
             return await _dbContext.Cities
-                            .Include(a => a.Country)
-                            .FirstOrDefaultAsync(a => a.Id == id);
+                            .Include(c => c.Country)
+                            .Include(c => c.PlacesToVisit)
+                            .Include(c => c.FamousCitizens)
+                            .FirstOrDefaultAsync(c => c.Id == id);
         }
     }
 }
