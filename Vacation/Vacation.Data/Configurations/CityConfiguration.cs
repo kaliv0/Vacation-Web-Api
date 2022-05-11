@@ -29,11 +29,11 @@ namespace Vacation.Data.Configurations
                 .WithOne(fc => fc.City);
 
             builder.HasData(
-                new City(1, "Rome", 1),
-                new City(2, "Florence", 1),
-                new City(3, "Berlin", 2),
-                new City(4, "Paris", 3),
-                new City(5, "Athens", 4));
+                new City { Id = 1, Name = "Rome", CountryId = 1 },
+                new City { Id = 2, Name = "Florence", CountryId = 1 },
+                new City { Id = 3, Name = "Berlin", CountryId = 2 },
+                new City { Id = 4, Name = "Paris", CountryId = 3 },
+                new City { Id = 5, Name = "Athens", CountryId = 4 });
         }
     }
 }

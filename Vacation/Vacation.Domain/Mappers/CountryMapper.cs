@@ -19,7 +19,10 @@ namespace Vacation.Domain
 
         public static Country ToCountry(this AddOrEditCountryDto countryDto)
         {
-            return new Country(countryDto.Name);
+            return new Country //TODO
+            {
+                Name = countryDto.Name
+            };
         }
     }
 }

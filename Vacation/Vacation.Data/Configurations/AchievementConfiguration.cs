@@ -22,11 +22,11 @@ namespace Vacation.Data.Configurations
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasData(
-                new Achievement(1, "Sposalizio", 1),
-                new Achievement(2, "La divina commedia", 2),
-                new Achievement(3, "Das Cabinet von Dr. Caligari", 3),
-                new Achievement(4, "Candid", 4),
-                new Achievement(5, "Ethics", 5));
+                new Achievement { Id = 1, Name = "Sposalizio", CitizenId = 1 },
+                new Achievement { Id = 2, Name = "La divina commedia", CitizenId = 2 },
+                new Achievement { Id = 3, Name = "Das Cabinet von Dr. Caligari", CitizenId = 3 },
+                new Achievement { Id = 4, Name = "Candid", CitizenId = 4 },
+                new Achievement { Id = 5, Name = "Ethics", CitizenId = 5 });
         }
     }
 }
