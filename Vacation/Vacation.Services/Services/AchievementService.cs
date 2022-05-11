@@ -2,6 +2,7 @@
 using Vacation.Domain.Contracts.Services;
 using Vacation.Domain.Dtos;
 using Vacation.Domain.Dtos.AchievementDtos;
+using Vacation.Domain.Exceptions.AchievementExceptions;
 using Vacation.Domain.Filters;
 using Vacation.Domain.Mappers;
 
@@ -44,14 +45,13 @@ namespace Vacation.Services.Services
 
         public async Task<GetAchievementDto> GetByIdAsync(int id)
         {
-            //    var countryInDb = await _repositoryManager.CountryRepository.GetCountryByIdAsync(id);
-            //    if (countryInDb == null)
-            //    {
-            //        throw new CountryNotFoundException();
-            //    }
+            var achievementInDb = await _repositoryManager.AchievementRepository.GetByIdAsync(id);
+            if (achievementInDb == null)
+            {
+                throw new AchievementNotFoundException();
+            }
 
-            //    return countryInDb.ToCountryDto();
-            return null;
+            return achievementInDb.ToAchievementDto();
         }
 
         public async Task UpdateAsync(int id, AddOrEditAchievementDto achievementDto)

@@ -33,11 +33,11 @@ namespace Vacation.Web.Controllers
         //    return Ok(await _serviceManager.CountryService.AddAsync(countryDto));
         //}
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetByIdAsync(int id)
-        //{
-        //    return Ok(await _serviceManager.CountryService.GetByIdAsync(id));
-        //}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetByIdAsync(int id)
+        {
+            return Ok(await _serviceManager.AchievementService.GetByIdAsync(id));
+        }
 
         //[HttpPut("{id}")]
         //public async Task<IActionResult> EditAsync(int id, [FromBody] AddOrEditCountryDto countryDto)

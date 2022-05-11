@@ -6,6 +6,6 @@
 
         public virtual City City { get; set; }
 
-        public virtual ICollection<Achievement> Achievements { get; set; }
+        public virtual ICollection<Achievement> Achievements { get; set; } = new HashSet<Achievement>();
     }
 }

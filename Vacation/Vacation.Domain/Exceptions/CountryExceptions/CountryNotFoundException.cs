@@ -1,6 +1,6 @@
 ﻿using Vacation.Domain.Constants.ErrorMessages;
 
-namespace Vacation.Domain.Exceptions
+namespace Vacation.Domain.Exceptions.CountryExceptions
 {
     public class CountryNotFoundException : NotFoundException
     {

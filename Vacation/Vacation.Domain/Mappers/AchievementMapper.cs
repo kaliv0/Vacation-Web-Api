@@ -7,18 +7,20 @@ namespace Vacation.Domain.Mappers
     {
         public static GetAchievementDto ToAchievementDto(this Achievement achievement)
         {
-            return new GetAchievementDto(
-                 achievement.Id,
-                 achievement.Name,
-                 achievement.Citizen.Name);
+            return new GetAchievementDto
+            {
+                Id = achievement.Id,
+                Name = achievement.Name,
+                Citizen = achievement.Citizen.Name
+            };
         }
 
-        //public static Country ToCountry(this AddOrEditCountryDto countryDto)
-        //{
-        //    return new Country
-        //    {
-        //        Name = countryDto.Name
-        //    };
-        //}
+        public static Achievement ToAchievement(this AddOrEditAchievementDto achievementDto)
+        {
+            return new Achievement
+            {
+                Name = achievementDto.Name
+            };
+        }
     }
 }

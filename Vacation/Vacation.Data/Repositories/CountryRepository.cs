@@ -18,7 +18,7 @@ namespace Vacation.Data.Repositories
                             .ToListAsync();
         }
 
-        public async Task<Country> GetCountryByIdAsync(int id)
+        public override async Task<Country?> GetByIdAsync(int id)
         {
             return await _dbContext.Countries
                             .Include(c => c.Cities)

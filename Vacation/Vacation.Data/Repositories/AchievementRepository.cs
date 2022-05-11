@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Vacation.Domain.Contracts.Repositories;
 using Vacation.Domain.Entities;
-using Vacation.Domain.Exceptions;
+using Vacation.Domain.Exceptions.AchievementExceptions;
 using Vacation.Domain.Filters;
 
 namespace Vacation.Data.Repositories
@@ -27,17 +27,17 @@ namespace Vacation.Data.Repositories
             var result = await achievements.ToListAsync();
             if (!result.Any())
             {
-                throw new AchievementNotFoundException();
+                throw new AchievementByCitizenNotFoundException();
             }
 
             return result;
         }
 
-        //public async Task<Country> GetCountryByIdAsync(int id)
-        //{
-        //    return await _dbContext.Countries
-        //                    .Include(c => c.Cities)
-        //                    .FirstOrDefaultAsync(c => c.Id == id);
-        //}
+        public override async Task<Achievement?> GetByIdAsync(int id)
+        {
+            return await _dbContext.Achievements
+                            .Include(a => a.Citizen)
+                            .FirstOrDefaultAsync(a => a.Id == id);
+        }
     }
 }
