@@ -19,7 +19,8 @@ namespace Vacation.Domain.Mappers
         {
             return new Achievement
             {
-                Name = achievementDto.Name
+                Name = achievementDto.Name,
+                CitizenId = achievementDto.CitizenId
             };
         }
     }

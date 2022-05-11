@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Vacation.Domain.Constants.SuccessMessages;
 using Vacation.Domain.Contracts.Services;
+using Vacation.Domain.Dtos.AchievementDtos;
 using Vacation.Domain.Filters;
 
 namespace Vacation.Web.Controllers
@@ -22,16 +24,15 @@ namespace Vacation.Web.Controllers
             return Ok(achievements);
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> AddAsync([FromBody] AddOrEditCountryDto countryDto)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    return Ok(await _serviceManager.CountryService.AddAsync(countryDto));
-        //}
+        [HttpPost]
+        public async Task<IActionResult> AddAsync([FromBody] AddOrEditAchievementDto achievementDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            return Ok(await _serviceManager.AchievementService.AddAsync(achievementDto));
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
@@ -39,22 +40,22 @@ namespace Vacation.Web.Controllers
             return Ok(await _serviceManager.AchievementService.GetByIdAsync(id));
         }
 
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> EditAsync(int id, [FromBody] AddOrEditCountryDto countryDto)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    await _serviceManager.CountryService.UpdateAsync(id, countryDto);
-        //    return Ok(CountrySuccessMessages.EditCountry);
-        //}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditAsync(int id, [FromBody] AddOrEditAchievementDto achievementDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            await _serviceManager.AchievementService.UpdateAsync(id, achievementDto);
+            return Ok(AchievementSuccessMessages.EditAchievement);
+        }
 
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteAsync(int id)
-        //{
-        //    await _serviceManager.CountryService.DeleteAsync(id);
-        //    return Ok(CountrySuccessMessages.DeleteCountry);
-        //}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            await _serviceManager.AchievementService.DeleteAsync(id);
+            return Ok(AchievementSuccessMessages.DeleteAchievement);
+        }
     }
 }

@@ -1,12 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Vacation.Domain.Constants.ErrorMessages;
-
-namespace Vacation.Domain.Dtos.CountryDtos
+﻿namespace Vacation.Domain.Dtos.CountryDtos
 {
-    public class AddOrEditCountryDto
+    public class AddOrEditCountryDto : AddOrEditBaseDto
     {
-        [Required]
-        [MaxLength(50, ErrorMessage = CountryErrorMessages.InvalidNameLength)]
-        public string Name { get; set; }
     }
 }

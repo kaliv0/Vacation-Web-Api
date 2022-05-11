@@ -2,9 +2,9 @@
 
 namespace Vacation.Domain.Exceptions.AchievementExceptions
 {
-    public class AchievementByCitizenNotFoundException : NotFoundException
+    public class AchievementsByCitizenNotFoundException : NotFoundException
     {
-        public AchievementByCitizenNotFoundException()
+        public AchievementsByCitizenNotFoundException()
             : base(AchievementErrorMessages.AchievementsByGivenCitizenNotFound)
         {
         }

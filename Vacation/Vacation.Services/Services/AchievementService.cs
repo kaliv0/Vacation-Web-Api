@@ -2,6 +2,7 @@
 using Vacation.Domain.Contracts.Services;
 using Vacation.Domain.Dtos;
 using Vacation.Domain.Dtos.AchievementDtos;
+using Vacation.Domain.Entities;
 using Vacation.Domain.Exceptions.AchievementExceptions;
 using Vacation.Domain.Filters;
 using Vacation.Domain.Mappers;
@@ -17,24 +18,22 @@ namespace Vacation.Services.Services
             _repositoryManager = repositoryManager;
         }
 
-        public async Task<BaseDto> AddAsync(AddOrEditAchievementDto countryDto)
+        public async Task<BaseDto> AddAsync(AddOrEditAchievementDto achievementDto)
         {
-            //var country = countryDto.ToCountry();
-            //var result = await _repositoryManager.CountryRepository.AddAsync(country);
-            //return BaseEntityTransformer<Country>.ToBaseDto(result);
-
-            return null;
+            var achievement = achievementDto.ToAchievement();
+            var result = await _repositoryManager.AchievementRepository.AddAsync(achievement);
+            return BaseEntityTransformer<Achievement>.ToBaseDto(result);
         }
 
         public async Task DeleteAsync(int id)
         {
-            //var countryToDelete = await _repositoryManager.CountryRepository.GetByIdAsync(id);
-            //if (countryToDelete == null)
-            //{
-            //    throw new CountryNotFoundException();
-            //}
+            var achievementToDelete = await _repositoryManager.AchievementRepository.GetByIdAsync(id);
+            if (achievementToDelete == null)
+            {
+                throw new AchievementNotFoundException();
+            }
 
-            //await _repositoryManager.CountryRepository.DeleteAsync(countryToDelete);
+            await _repositoryManager.AchievementRepository.DeleteAsync(achievementToDelete);
         }
 
         public async Task<IEnumerable<GetAchievementDto>> GetAllAsync(GetAchievementFilter getAchievementFilter)
@@ -56,14 +55,21 @@ namespace Vacation.Services.Services
 
         public async Task UpdateAsync(int id, AddOrEditAchievementDto achievementDto)
         {
-            //var countryToUpdate = await _repositoryManager.CountryRepository.GetByIdAsync(id);
-            //if (countryToUpdate == null)
-            //{
-            //    throw new CountryNotFoundException();
-            //}
+            var achievementToUpdate = await _repositoryManager.AchievementRepository.GetByIdAsync(id);
+            if (achievementToUpdate == null)
+            {
+                throw new AchievementNotFoundException();
+            }
 
-            //countryToUpdate.Name = countryDto.Name;
-            //await _repositoryManager.CountryRepository.UpdateAsync(countryToUpdate);
+            achievementToUpdate.Name = achievementDto.Name;
+            achievementToUpdate.CitizenId = achievementDto.CitizenId;
+            await _repositoryManager.AchievementRepository.UpdateAsync(achievementToUpdate);
         }
+
+        //private async Task<bool> CheckCitizenId(int id)
+        //{
+        //    var citizensInDb = _repositoryManager.CitizenRepository.GetByIdAsync(id);
+        //    return citizensInDb != null;
+        //}
     }
 }

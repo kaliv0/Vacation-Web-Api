@@ -4,6 +4,8 @@
     {
         ICountryService CountryService { get; }
 
+        ICityService CityService { get; }
+
         IAchievementService AchievementService { get; }
     }
 }

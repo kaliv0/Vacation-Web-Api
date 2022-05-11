@@ -27,7 +27,7 @@ namespace Vacation.Data.Repositories
             var result = await achievements.ToListAsync();
             if (!result.Any())
             {
-                throw new AchievementByCitizenNotFoundException();
+                throw new AchievementsByCitizenNotFoundException();
             }
 
             return result;

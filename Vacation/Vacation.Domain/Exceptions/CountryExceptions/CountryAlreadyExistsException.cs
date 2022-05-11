@@ -2,7 +2,7 @@
 
 namespace Vacation.Domain.Exceptions.CountryExceptions
 {
-    public class CountryAlreadyExistsException : AlreadyExistsException
+    public class CountryAlreadyExistsException : BadRequestException
     {
         public CountryAlreadyExistsException()
             : base(CountryErrorMessages.CountryAlreadyExists)
