@@ -1,6 +1,5 @@
 ﻿using Vacation.Domain.Dtos;
 using Vacation.Domain.Dtos.CountryDtos;
-using Vacation.Domain.Entities;
 
 namespace Vacation.Domain.Contracts.Services
 {
@@ -10,7 +9,7 @@ namespace Vacation.Domain.Contracts.Services
 
         Task<GetCountryDto> GetByIdAsync(int id);
 
-        Task<BaseDto> AddAsync(AddOrEditCountryDto countryDto); //???
+        Task<BaseDto> AddAsync(AddOrEditCountryDto countryDto);
 
         Task UpdateAsync(int id, AddOrEditCountryDto countryDto);
 

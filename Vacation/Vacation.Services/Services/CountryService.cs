@@ -4,7 +4,7 @@ using Vacation.Domain.Contracts.Services;
 using Vacation.Domain.Dtos;
 using Vacation.Domain.Dtos.CountryDtos;
 using Vacation.Domain.Entities;
-using Vacation.Domain.Exceptions;
+using Vacation.Domain.Exceptions.CountryExceptions;
 using Vacation.Domain.Mappers;
 
 namespace Vacation.Services.Services
@@ -21,6 +21,12 @@ namespace Vacation.Services.Services
         public async Task<BaseDto> AddAsync(AddOrEditCountryDto countryDto)
         {
             var country = countryDto.ToCountry();
+            var countriesInDb = await _repositoryManager.CountryRepository.GetAllAsync();
+            if (countriesInDb.Any(c => c.Name == countryDto.Name))
+            {
+                throw new CountryAlreadyExistsException();
+            }
+
             var result = await _repositoryManager.CountryRepository.AddAsync(country);
             return BaseEntityTransformer<Country>.ToBaseDto(result);
         }
@@ -44,7 +50,7 @@ namespace Vacation.Services.Services
 
         public async Task<GetCountryDto> GetByIdAsync(int id)
         {
-            var countryInDb = await _repositoryManager.CountryRepository.GetCountryByIdAsync(id);
+            var countryInDb = await _repositoryManager.CountryRepository.GetByIdAsync(id);
             if (countryInDb == null)
             {
                 throw new CountryNotFoundException();
@@ -61,7 +67,7 @@ namespace Vacation.Services.Services
                 throw new CountryNotFoundException();
             }
 
-            countryToUpdate.Name = countryDto.Name; 
+            countryToUpdate.Name = countryDto.Name;
             await _repositoryManager.CountryRepository.UpdateAsync(countryToUpdate);
         }
     }

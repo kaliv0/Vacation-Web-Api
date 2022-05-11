@@ -2,6 +2,6 @@
 {
     public class GetCountryDto : BaseDto
     {
-        public List<BaseDto> Cities { get; set; }
+        public IEnumerable<BaseDto> Cities { get; set; } = new HashSet<BaseDto>();
     }
 }

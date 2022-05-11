@@ -2,6 +2,6 @@
 {
     public class Country : BaseEntity
     {
-        public virtual ICollection<City> Cities { get; }
+        public virtual ICollection<City> Cities { get; } = new HashSet<City>();
     }
 }
