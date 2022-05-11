@@ -60,20 +60,20 @@ namespace Vacation.Services.Services
             return placeInDb.ToPlaceDto();
         }
 
-        public async Task UpdateAsync(int id, AddOrEditPlaceDto PlaceDto)
+        public async Task UpdateAsync(int id, AddOrEditPlaceDto placeDto)
         {
             var placeToUpdate = await _repositoryManager.PlaceRepository.GetByIdAsync(id);
             if (placeToUpdate == null)
             {
                 throw new PlaceNotFoundException();
             }
-            if (!await this.CheckCityId(PlaceDto.CityId))
+            if (!await this.CheckCityId(placeDto.CityId))
             {
                 throw new CityNotFoundException();
             }
 
-            placeToUpdate.Name = PlaceDto.Name;
-            placeToUpdate.CityId = PlaceDto.CityId;
+            placeToUpdate.Name = placeDto.Name;
+            placeToUpdate.CityId = placeDto.CityId;
             await _repositoryManager.PlaceRepository.UpdateAsync(placeToUpdate);
         }
 

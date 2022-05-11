@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Vacation.Domain.Contracts.Repositories;
+﻿using Vacation.Domain.Contracts.Repositories;
 using Vacation.Domain.Contracts.Services;
-using Vacation.Domain.Dtos.CitizenDtos;
 using Vacation.Domain.Dtos;
+using Vacation.Domain.Dtos.CitizenDtos;
 using Vacation.Domain.Entities;
+using Vacation.Domain.Exceptions.CitizenExceptions;
 using Vacation.Domain.Exceptions.CityExceptions;
 using Vacation.Domain.Exceptions.CountryExceptions;
-using Vacation.Domain.Exceptions.CitizenExceptions;
 using Vacation.Domain.Filters;
 using Vacation.Domain.Mappers;
 
@@ -66,20 +60,20 @@ namespace Vacation.Services.Services
             return citizenInDb.ToCitizenDto();
         }
 
-        public async Task UpdateAsync(int id, AddOrEditCitizenDto CitizenDto)
+        public async Task UpdateAsync(int id, AddOrEditCitizenDto citizenDto)
         {
             var citizenToUpdate = await _repositoryManager.CitizenRepository.GetByIdAsync(id);
             if (citizenToUpdate == null)
             {
                 throw new CitizenNotFoundException();
             }
-            if (!await this.CheckCityId(CitizenDto.CityId))
+            if (!await this.CheckCityId(citizenDto.CityId))
             {
                 throw new CityNotFoundException();
             }
 
-            citizenToUpdate.Name = CitizenDto.Name;
-            citizenToUpdate.CityId = CitizenDto.CityId;
+            citizenToUpdate.Name = citizenDto.Name;
+            citizenToUpdate.CityId = citizenDto.CityId;
             await _repositoryManager.CitizenRepository.UpdateAsync(citizenToUpdate);
         }
 

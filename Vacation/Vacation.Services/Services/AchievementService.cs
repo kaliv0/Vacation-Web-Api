@@ -4,6 +4,9 @@ using Vacation.Domain.Dtos;
 using Vacation.Domain.Dtos.AchievementDtos;
 using Vacation.Domain.Entities;
 using Vacation.Domain.Exceptions.AchievementExceptions;
+using Vacation.Domain.Exceptions.CitizenExceptions;
+using Vacation.Domain.Exceptions.CityExceptions;
+using Vacation.Domain.Exceptions.CountryExceptions;
 using Vacation.Domain.Filters;
 using Vacation.Domain.Mappers;
 
@@ -20,6 +23,11 @@ namespace Vacation.Services.Services
 
         public async Task<BaseDto> AddAsync(AddOrEditAchievementDto achievementDto)
         {
+            if (!await this.CheckCitizenId(achievementDto.CitizenId))
+            {
+                throw new CitizenNotFoundException();
+            }
+
             var achievement = achievementDto.ToAchievement();
             var result = await _repositoryManager.AchievementRepository.AddAsync(achievement);
             return BaseEntityTransformer<Achievement>.ToBaseDto(result);
@@ -60,16 +68,20 @@ namespace Vacation.Services.Services
             {
                 throw new AchievementNotFoundException();
             }
+            if (!await this.CheckCitizenId(achievementDto.CitizenId))
+            {
+                throw new CitizenNotFoundException();
+            }
 
             achievementToUpdate.Name = achievementDto.Name;
             achievementToUpdate.CitizenId = achievementDto.CitizenId;
             await _repositoryManager.AchievementRepository.UpdateAsync(achievementToUpdate);
         }
 
-        //private async Task<bool> CheckCitizenId(int id)
-        //{
-        //    var citizensInDb = _repositoryManager.CitizenRepository.GetByIdAsync(id);
-        //    return citizensInDb != null;
-        //}
+        private async Task<bool> CheckCitizenId(int id)
+        {
+            var citizensInDb = _repositoryManager.CitizenRepository.GetByIdAsync(id);
+            return citizensInDb != null;
+        }
     }
 }
