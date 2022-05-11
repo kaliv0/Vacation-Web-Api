@@ -24,7 +24,7 @@ namespace Vacation.Services.Services
         {
             if (!await this.CheckCityId(placeDto.CityId))
             {
-                throw new CountryNotFoundException();
+                throw new CityNotFoundException();
             }
 
             var place = placeDto.ToPlace();

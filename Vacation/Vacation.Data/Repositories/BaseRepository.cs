@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using Vacation.Domain.Contracts.Repositories;
 
 namespace Vacation.Data.Repositories
@@ -15,7 +16,7 @@ namespace Vacation.Data.Repositories
 
         public virtual async Task<T> AddAsync(T entity)
         {
-            var entityInDb = _dbContext.Set<T>().Add(entity);
+            var entityInDb = await _dbContext.Set<T>().AddAsync(entity);
             await _dbContext.SaveChangesAsync();
 
             return entityInDb.Entity;

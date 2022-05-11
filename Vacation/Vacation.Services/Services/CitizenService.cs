@@ -24,7 +24,7 @@ namespace Vacation.Services.Services
         {
             if (!await this.CheckCityId(citizenDto.CityId))
             {
-                throw new CountryNotFoundException();
+                throw new CityNotFoundException();
             }
 
             var citizen = citizenDto.ToCitizen();

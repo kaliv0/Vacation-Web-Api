@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using Vacation.Domain.Contracts.Repositories;
 using Vacation.Domain.Entities;
+using Vacation.Domain.Exceptions;
 using Vacation.Domain.Exceptions.AchievementExceptions;
 using Vacation.Domain.Filters;
 
@@ -21,13 +23,18 @@ namespace Vacation.Data.Repositories
 
             if (getAchievementFilter.Citizen != null)
             {
-                achievements = achievements.Where(a => a.Citizen.Name == getAchievementFilter.Citizen);
+                achievements = achievements.Where(a => a.Citizen.Name.Contains(getAchievementFilter.Citizen));
             }
 
             var result = await achievements.ToListAsync();
             if (!result.Any())
             {
-                throw new AchievementsByCitizenNotFoundException();
+                if (getAchievementFilter.Citizen != null)
+                {
+                    throw new NoFilteredItemsException();
+                }
+
+                throw new NoAchievementsFound();
             }
 
             return result;

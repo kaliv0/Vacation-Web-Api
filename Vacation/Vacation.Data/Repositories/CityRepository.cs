@@ -2,6 +2,7 @@
 
 using Vacation.Domain.Contracts.Repositories;
 using Vacation.Domain.Entities;
+using Vacation.Domain.Exceptions;
 using Vacation.Domain.Exceptions.CityExceptions;
 using Vacation.Domain.Filters;
 
@@ -24,13 +25,18 @@ namespace Vacation.Data.Repositories
 
             if (getCityFilter.Country != null)
             {
-                Cities = Cities.Where(c => c.Country.Name == getCityFilter.Country);
+                Cities = Cities.Where(c => c.Country.Name.Contains(getCityFilter.Country));
             }
 
             var result = await Cities.ToListAsync();
             if (!result.Any())
             {
-                throw new CitiesFromCountryNotFoundException();
+                if (getCityFilter.Country != null)
+                {
+                    throw new NoFilteredItemsException();
+                }
+
+                throw new NoCitiesFoundException();
             }
 
             return result;

@@ -22,13 +22,13 @@ namespace Vacation.Data.Repositories
 
             if (getPlaceFilter.City != null)
             {
-                Places = Places.Where(p => p.City.Name == getPlaceFilter.City);
+                Places = Places.Where(p => p.City.Name.Contains(getPlaceFilter.City));
             }
 
             var result = await Places.ToListAsync();
             if (!result.Any())
             {
-                throw new PlacesInCityNotFoundException();
+                throw new NoPlacesFoundException();
             }
 
             return result;

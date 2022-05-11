@@ -2,6 +2,7 @@
 
 using Vacation.Domain.Contracts.Repositories;
 using Vacation.Domain.Entities;
+using Vacation.Domain.Exceptions;
 using Vacation.Domain.Exceptions.CitizenExceptions;
 using Vacation.Domain.Filters;
 
@@ -16,20 +17,25 @@ namespace Vacation.Data.Repositories
 
         public async Task<IEnumerable<Citizen>> GetAllCitizensAsync(GetCitizenFilter getCitizenFilter)
         {
-            var Citizens = _dbContext.Citizens
+            var citizens = _dbContext.Citizens
                             .Include(c => c.City)
                             .Include(c => c.Achievements)
                             .AsQueryable();
 
             if (getCitizenFilter.City != null)
             {
-                Citizens = Citizens.Where(c => c.City.Name == getCitizenFilter.City);
+                citizens = citizens.Where(c => c.City.Name.Contains(getCitizenFilter.City));
             }
 
-            var result = await Citizens.ToListAsync();
+            var result = await citizens.ToListAsync();
             if (!result.Any())
             {
-                throw new CitizenFromCityNotFoundException();
+                if (getCitizenFilter.City != null)
+                {
+                    throw new NoFilteredItemsException();
+                }
+
+                throw new NoCitizensFoundException();
             }
 
             return result;

@@ -5,8 +5,6 @@ using Vacation.Domain.Dtos.AchievementDtos;
 using Vacation.Domain.Entities;
 using Vacation.Domain.Exceptions.AchievementExceptions;
 using Vacation.Domain.Exceptions.CitizenExceptions;
-using Vacation.Domain.Exceptions.CityExceptions;
-using Vacation.Domain.Exceptions.CountryExceptions;
 using Vacation.Domain.Filters;
 using Vacation.Domain.Mappers;
 
@@ -80,7 +78,7 @@ namespace Vacation.Services.Services
 
         private async Task<bool> CheckCitizenId(int id)
         {
-            var citizensInDb = _repositoryManager.CitizenRepository.GetByIdAsync(id);
+            var citizensInDb = await _repositoryManager.CitizenRepository.GetByIdAsync(id);
             return citizensInDb != null;
         }
     }
