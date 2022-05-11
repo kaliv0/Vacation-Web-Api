@@ -2,13 +2,17 @@
 {
     public class Country : BaseEntity
     {
-        //public Country(int id, string name, ICollection<City> cities)
-        //{
-        //    this.Id = id;
-        //    this.Name = name;
-        //    this.Cities = cities;
-        //}
+        public Country(string name)
+            : base(name)
+        {
+        }
 
-        public virtual ICollection<City> Cities { get; }
+        public Country(int id, string name)
+            : base(id, name)
+        {
+        }
+
+        public virtual ICollection<City> Cities { get; } 
+            //= new HashSet<City>();
     }
 }

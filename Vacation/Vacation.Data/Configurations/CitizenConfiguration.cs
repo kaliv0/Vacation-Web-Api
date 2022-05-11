@@ -25,11 +25,11 @@ namespace Vacation.Data.Configurations
                 .WithOne(a => a.Citizen);
 
             builder.HasData(
-                new Citizen { Id = 1, Name = "Raphael Sanzio", CityId = 1 },
-                new Citizen { Id = 2, Name = "Dante Alighieri", CityId = 2 },
-                new Citizen { Id = 3, Name = "Max Schreck", CityId = 3 },
-                new Citizen { Id = 4, Name = "Voltaire", CityId = 4 },
-                new Citizen { Id = 5, Name = "Aristotle", CityId = 5 });
+                new Citizen(1, "Raphael Sanzio", 1),
+                new Citizen(2, "Dante Alighieri", 2),
+                new Citizen(3, "Max Schreck", 3),
+                new Citizen(4, "Voltaire", 4),
+                new Citizen(5, "Aristotle", 5));
         }
     }
 }

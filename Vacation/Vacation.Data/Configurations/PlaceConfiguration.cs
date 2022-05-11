@@ -22,13 +22,13 @@ namespace Vacation.Data.Configurations
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasData(
-                new Place { Id = 1, Name = "Vatican", CityId = 1 },
-                new Place { Id = 2, Name = "Colosseum", CityId = 1 },
-                new Place { Id = 3, Name = "Uffizi", CityId = 2 },
-                new Place { Id = 4, Name = "Brandenburg gate", CityId = 3 },
-                new Place { Id = 5, Name = "Le Louvre", CityId = 4 },
-                new Place { Id = 6, Name = "L'Arc de triomphe", CityId = 4 },
-                new Place { Id = 7, Name = "Acropolis", CityId = 5 });
+                new Place(1, "Vatican", 1),
+                new Place(2, "Colosseum", 1),
+                new Place(3, "Uffizi", 2),
+                new Place(4, "Brandenburg gate", 3),
+                new Place(5, "Le Louvre", 4),
+                new Place(6, "L'Arc de triomphe", 4),
+                new Place(7, "Acropolis", 5));
         }
     }
 }

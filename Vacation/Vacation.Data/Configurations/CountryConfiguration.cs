@@ -18,13 +18,13 @@ namespace Vacation.Data.Configurations
 
             builder.HasMany(c => c.Cities)
                 .WithOne(c => c.Country);
-                
+
 
             builder.HasData(
-                new Country { Id = 1, Name = "Italy" },
-                new Country { Id = 2, Name = "Germany" },
-                new Country { Id = 3, Name = "France" },
-                new Country { Id = 4, Name = "Greece" });
+                new Country(1, "Italy"),
+                new Country(2, "Germany"),
+                new Country(3, "France"),
+                new Country(4, "Greece"));
         }
     }
 }

@@ -61,7 +61,7 @@ namespace Vacation.Services.Services
                 throw new CountryNotFoundException();
             }
 
-            countryToUpdate.Name = countryDto.Name; 
+            countryToUpdate.Name = countryDto.Name;
             await _repositoryManager.CountryRepository.UpdateAsync(countryToUpdate);
         }
     }

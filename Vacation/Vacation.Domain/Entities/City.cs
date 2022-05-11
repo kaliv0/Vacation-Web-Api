@@ -1,7 +1,13 @@
 ﻿namespace Vacation.Domain.Entities
 {
-    public class City:BaseEntity
+    public class City : BaseEntity
     {
+        public City(int id, string name, int countryId)
+            : base(id, name)
+        {
+            this.CountryId = countryId;
+        }
+
         public int CountryId { get; set; }
 
         public virtual Country Country { get; set; }
