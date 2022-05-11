@@ -6,6 +6,10 @@
 
         ICityRepository CityRepository { get; }
 
+        IPlaceRepository PlaceRepository { get; }
+
+        ICitizenRepository CitizenRepository { get; }
+
         IAchievementRepository AchievementRepository { get; }
     }
 }
