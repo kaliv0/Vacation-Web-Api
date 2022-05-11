@@ -1,11 +1,11 @@
-﻿using Vacation.Domain.Constants.ErrorMessages;
+﻿using Vacation.Domain.Constants;
 
 namespace Vacation.Domain.Exceptions.CountryExceptions
 {
     public class CountryNotFoundException : NotFoundException
     {
         public CountryNotFoundException() 
-            : base(CountryErrorMessages.CountryNotFound)
+            : base(ErrorMessages.CountryNotFound)
         {
         }
     }

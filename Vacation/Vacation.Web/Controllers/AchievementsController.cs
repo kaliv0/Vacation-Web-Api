@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Vacation.Domain.Constants.SuccessMessages;
+
+using Vacation.Domain.Constants;
 using Vacation.Domain.Contracts.Services;
 using Vacation.Domain.Dtos.AchievementDtos;
 using Vacation.Domain.Filters;
@@ -48,14 +49,14 @@ namespace Vacation.Web.Controllers
                 return BadRequest();
             }
             await _serviceManager.AchievementService.UpdateAsync(id, achievementDto);
-            return Ok(AchievementSuccessMessages.EditAchievement);
+            return Ok(SuccessMessages.EditAchievement);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             await _serviceManager.AchievementService.DeleteAsync(id);
-            return Ok(AchievementSuccessMessages.DeleteAchievement);
+            return Ok(SuccessMessages.DeleteAchievement);
         }
     }
 }

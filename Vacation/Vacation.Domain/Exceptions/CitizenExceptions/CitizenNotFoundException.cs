@@ -1,11 +1,11 @@
-﻿using Vacation.Domain.Constants.ErrorMessages;
+﻿using Vacation.Domain.Constants;
 
 namespace Vacation.Domain.Exceptions.CitizenExceptions
 {
     public class CitizenNotFoundException : NotFoundException
     {
         public CitizenNotFoundException()
-            : base(CitizenErrorMessages.CitizenNotFound)
+            : base(ErrorMessages.CitizenNotFound)
         {
         }
     }

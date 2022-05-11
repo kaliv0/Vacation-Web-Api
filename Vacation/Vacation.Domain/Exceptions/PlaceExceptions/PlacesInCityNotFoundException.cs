@@ -1,11 +1,11 @@
-﻿using Vacation.Domain.Constants.ErrorMessages;
+﻿using Vacation.Domain.Constants;
 
 namespace Vacation.Domain.Exceptions.PlaceExceptions
 {
     public class PlacesInCityNotFoundException : NotFoundException
     {
         public PlacesInCityNotFoundException()
-            : base(PlaceErrorMessages.PlacesInGivenCityNotFound)
+            : base(ErrorMessages.PlacesInGivenCityNotFound)
         {
         }
     }

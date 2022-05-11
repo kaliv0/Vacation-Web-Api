@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-using Vacation.Domain.Constants.SuccessMessages;
+using Vacation.Domain.Constants;
 using Vacation.Domain.Contracts.Services;
 using Vacation.Domain.Dtos.PlaceDtos;
 using Vacation.Domain.Filters;
@@ -49,14 +49,14 @@ namespace Vacation.Web.Controllers
                 return BadRequest();
             }
             await _serviceManager.PlaceService.UpdateAsync(id, PlaceDto);
-            return Ok(PlaceSuccessMessages.EditPlace);
+            return Ok(SuccessMessages.EditPlace);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             await _serviceManager.PlaceService.DeleteAsync(id);
-            return Ok(PlaceSuccessMessages.DeletePlace);
+            return Ok(SuccessMessages.DeletePlace);
         }
     }
 }

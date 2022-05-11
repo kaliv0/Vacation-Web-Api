@@ -1,11 +1,11 @@
-﻿using Vacation.Domain.Constants.ErrorMessages;
+﻿using Vacation.Domain.Constants;
 
 namespace Vacation.Domain.Exceptions.CityExceptions
 {
     public class CityNotFoundException : NotFoundException
     {
         public CityNotFoundException()
-            : base(CityErrorMessages.CityNotFound)
+            : base(ErrorMessages.CityNotFound)
         {
         }
     }
