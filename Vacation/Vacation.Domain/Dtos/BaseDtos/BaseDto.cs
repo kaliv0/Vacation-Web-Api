@@ -1,4 +1,4 @@
-﻿namespace Vacation.Domain.Dtos
+﻿namespace Vacation.Domain.Dtos.BaseDtos
 {
     public class BaseDto
     {

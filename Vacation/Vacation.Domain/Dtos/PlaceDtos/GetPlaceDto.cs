@@ -1,4 +1,6 @@
-﻿namespace Vacation.Domain.Dtos.PlaceDtos
+﻿using Vacation.Domain.Dtos.BaseDtos;
+
+namespace Vacation.Domain.Dtos.PlaceDtos
 {
     public class GetPlaceDto : BaseDto
     {

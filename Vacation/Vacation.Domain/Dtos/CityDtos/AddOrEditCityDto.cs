@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 using Vacation.Domain.Constants;
+using Vacation.Domain.Dtos.BaseDtos;
 
 namespace Vacation.Domain.Dtos.CityDtos
 {

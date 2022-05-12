@@ -2,7 +2,7 @@
 
 using Vacation.Domain.Constants;
 
-namespace Vacation.Domain.Dtos
+namespace Vacation.Domain.Dtos.BaseDtos
 {
     public abstract class AddOrEditBaseDto
     {

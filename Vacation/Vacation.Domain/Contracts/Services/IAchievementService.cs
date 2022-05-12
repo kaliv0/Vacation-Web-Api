@@ -1,5 +1,5 @@
-﻿using Vacation.Domain.Dtos;
-using Vacation.Domain.Dtos.AchievementDtos;
+﻿using Vacation.Domain.Dtos.AchievementDtos;
+using Vacation.Domain.Dtos.BaseDtos;
 using Vacation.Domain.Filters;
 
 namespace Vacation.Domain.Contracts.Services

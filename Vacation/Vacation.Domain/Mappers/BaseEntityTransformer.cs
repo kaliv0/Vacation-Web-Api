@@ -1,4 +1,4 @@
-﻿using Vacation.Domain.Dtos;
+﻿using Vacation.Domain.Dtos.BaseDtos;
 using Vacation.Domain.Entities;
 
 namespace Vacation.Domain.Mappers

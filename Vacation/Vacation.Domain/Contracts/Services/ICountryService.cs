@@ -1,4 +1,4 @@
-﻿using Vacation.Domain.Dtos;
+﻿using Vacation.Domain.Dtos.BaseDtos;
 using Vacation.Domain.Dtos.CountryDtos;
 
 namespace Vacation.Domain.Contracts.Services

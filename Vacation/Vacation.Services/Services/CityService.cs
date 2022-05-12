@@ -1,9 +1,8 @@
 ﻿using Vacation.Domain.Contracts.Repositories;
 using Vacation.Domain.Contracts.Services;
-using Vacation.Domain.Dtos;
+using Vacation.Domain.Dtos.BaseDtos;
 using Vacation.Domain.Dtos.CityDtos;
 using Vacation.Domain.Entities;
-using Vacation.Domain.Exceptions;
 using Vacation.Domain.Exceptions.CityExceptions;
 using Vacation.Domain.Exceptions.CountryExceptions;
 using Vacation.Domain.Filters;

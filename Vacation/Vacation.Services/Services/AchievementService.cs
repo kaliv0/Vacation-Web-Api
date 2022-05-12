@@ -1,7 +1,7 @@
 ﻿using Vacation.Domain.Contracts.Repositories;
 using Vacation.Domain.Contracts.Services;
-using Vacation.Domain.Dtos;
 using Vacation.Domain.Dtos.AchievementDtos;
+using Vacation.Domain.Dtos.BaseDtos;
 using Vacation.Domain.Entities;
 using Vacation.Domain.Exceptions.AchievementExceptions;
 using Vacation.Domain.Exceptions.CitizenExceptions;

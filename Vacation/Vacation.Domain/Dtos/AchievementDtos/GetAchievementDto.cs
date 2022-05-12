@@ -1,4 +1,6 @@
-﻿namespace Vacation.Domain.Dtos.AchievementDtos
+﻿using Vacation.Domain.Dtos.BaseDtos;
+
+namespace Vacation.Domain.Dtos.AchievementDtos
 {
     public class GetAchievementDto : BaseDto
     {      

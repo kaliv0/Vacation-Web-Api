@@ -1,4 +1,6 @@
-﻿namespace Vacation.Domain.Dtos.CitizenDtos
+﻿using Vacation.Domain.Dtos.BaseDtos;
+
+namespace Vacation.Domain.Dtos.CitizenDtos
 {
     public class GetCitizenDto : BaseDto
     {

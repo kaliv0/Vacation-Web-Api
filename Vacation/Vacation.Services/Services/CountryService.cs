@@ -1,7 +1,7 @@
 ﻿using Vacation.Domain;
 using Vacation.Domain.Contracts.Repositories;
 using Vacation.Domain.Contracts.Services;
-using Vacation.Domain.Dtos;
+using Vacation.Domain.Dtos.BaseDtos;
 using Vacation.Domain.Dtos.CountryDtos;
 using Vacation.Domain.Entities;
 using Vacation.Domain.Exceptions.CountryExceptions;
